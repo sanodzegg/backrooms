@@ -1,0 +1,24 @@
+<html>
+    <%- include('../partials/head'); %>
+    <body>
+        <form action="/insert" method="post">
+            <div class="form-group">
+              <label for="name">სახელწოდება</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+            </div>
+            <div class="form-group">
+              <label for="desc">განმარტება</label>
+              <input type="text" class="form-control" id="desc" name="description" placeholder="Description">
+            </div>
+            <div class="form-group">
+              <label for="price">ფასი</label>
+              <input type="number" class="form-control" id="price" name="price" placeholder="Price">
+            </div>
+            <div class="form-group">
+              <label for="url">სურათი</label>
+              <input type="text" class="form-control" id="url" name="imageurl" placeholder="Image URL">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </body>
+</html>
