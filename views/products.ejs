@@ -1,35 +1,42 @@
 <html>
     <%- include('../partials/head'); %>
     <body>
-        <a href="/insert">Add</a>
-        <table class="table">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">სახელწოდება</th>
-                <th scope="col">განმარტება</th>
-                <th scope="col">ფასი</th>
-                <th scope="col">სურათი</th>
-              </tr>
-            </thead>
-            <tbody>
-                <% data.forEach(e => { %>
-                    <tr>
-                        <th scope="row" id="ID"><%= e.ID %></th>
-                        <td><%= e.Name %></td>
-                        <td><%= e.Description %></td>
-                        <td><%= e.Price %></td>
-                        <td><%= e.Image %></td>
-                        <td><a href="/edit/<%=e.ID%>" class="btn btn-primary text-light">Edit</a></td>
-                        <td><a class="btn btn-danger text-light btnDel">Delete</a></td>
-                    </tr>
-                <% }); %> 
-            </tbody>
-        </table>
-        <div class="confirm" id="confirmTab">
-            <a class="btn btn-disabled" id="cancelMain">Cancel</a>
-            <a class="btn btn-primary text-light" id="acceptMain">OK</a>
-        </div>
+        <%- include('../partials/navbar'); %>
+        <section class="mainSection">
+            <div class="p-5 bg-light border rounded-3">
+                <table class="table">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">სახელწოდება</th>
+                        <th scope="col">განმარტება</th>
+                        <th scope="col">ფასი</th>
+                        <th scope="col">სურათი</th>
+                        <th scope="col">მარაგში</th>
+                        <th scope="col"><a href="/apn/insert" class="btn btn-primary">Add</a></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <% data.forEach(e => { %>
+                            <tr>
+                                <th scope="row" id="ID"><%= e.ID %></th>
+                                <td><%= e.Name %></td>
+                                <td><%= e.Description %></td>
+                                <td><%= e.Price %></td>
+                                <td><%= e.Images %></td>
+                                <td><%= e.Stock %></td>
+                                <td><a href="/apn/edit/<%= JSON.stringify(e) %>" class="btn btn-primary text-light">Edit</a></td>
+                                <td><a class="btn btn-danger text-light btnDel">Delete</a></td>
+                            </tr>
+                        <% }); %> 
+                    </tbody>
+                </table>
+            </div>
+            <div class="confirm" id="confirmTab">
+                <a class="btn btn-disabled" id="cancelMain">Cancel</a>
+                <a class="btn btn-primary text-light" id="acceptMain">OK</a>
+            </div>
+        </section>
     </body>
 
     <style>
@@ -41,7 +48,7 @@
             transform: translate(-50%, -50%);
             background-color: rgb(233, 233, 233);
             box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
-            padding: 3rem;
+            padding: 1rem 2rem;
             border-radius: 10px;
         }
     </style>
@@ -64,7 +71,7 @@
                     $(idText).remove();
                 }
                 acceptMain.onclick = () => {
-                    acceptMain.setAttribute("href", `/delete/${id}`);
+                    acceptMain.setAttribute("href", `/apn/delete/${id}`);
                 }
             });
         });

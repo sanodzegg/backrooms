@@ -1,24 +1,31 @@
 <html>
     <%- include('../partials/head'); %>
     <body>
-        <form action="/insert" method="post">
-            <div class="form-group">
-              <label for="name">სახელწოდება</label>
-              <input type="text" class="form-control" id="name" name="name" placeholder="Name">
-            </div>
-            <div class="form-group">
-              <label for="desc">განმარტება</label>
-              <input type="text" class="form-control" id="desc" name="description" placeholder="Description">
-            </div>
-            <div class="form-group">
-              <label for="price">ფასი</label>
-              <input type="number" class="form-control" id="price" name="price" placeholder="Price">
-            </div>
-            <div class="form-group">
-              <label for="url">სურათი</label>
-              <input type="text" class="form-control" id="url" name="imageurl" placeholder="Image URL">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+      <%- include('../partials/navbar'); %>
+      <div class="p-5 bg-light border rounded-3">
+        <form action="/apn/insert" method="post">
+          <div class="mb-3">
+            <label for="name">სახელწოდება</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Name">
+          </div>
+          <div class="mb-3">
+            <label for="desc">განმარტება</label>
+            <input type="text" class="form-control" id="desc" name="description" placeholder="Description">
+          </div>
+          <div class="mb-3">
+            <label for="price">ფასი</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="Price">
+          </div>
+          <div class="mb-3">
+            <label for="url">სურათი</label>
+            <input type="text" class="form-control" id="url" name="imageurl" placeholder="Image URL">
+          </div>
+          <div class="mb-3">
+            <label for="instock">მარაგში (0-1)</label>
+            <input type="number" class="form-control" id="stock" name="instock" placeholder="In Stock">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+      </div>
     </body>
 </html>

@@ -1,0 +1,53 @@
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body nav {
+  padding: 1rem !important;
+}
+
+body nav form {
+  margin: 0;
+}
+
+body nav .nav-link {
+  color: #FFF !important;
+}
+
+body .mainSection .jumbotron {
+  background-color: unset !important;
+  width: 100%;
+  max-width: 1700px;
+  margin: 0 auto;
+}
+
+body .mainSection .table thead th {
+  border: unset !important;
+}
+
+body .sect {
+  background-color: #d5d5d5;
+  -webkit-box-shadow: 0 0 10px #0000003d;
+          box-shadow: 0 0 10px #0000003d;
+  padding: 5rem 2rem;
+  max-width: 500px;
+}
+
+body .sect h1 {
+  margin: 0;
+  padding: 0;
+  font-size: 1.5rem;
+}
+
+body .btn {
+  cursor: pointer !important;
+}
+
+body .table > :not(caption) > * > * {
+  max-width: 500px;
+  overflow: hidden;
+}
+/*# sourceMappingURL=master.css.map */

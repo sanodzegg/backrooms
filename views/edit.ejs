@@ -1,25 +1,32 @@
 <html>
     <%- include('../partials/head'); %>
     <body>
-        <form action="/edit/<%= id %>" method="post">
-            <h4>Editing Product N: <%= id %></h4>
-            <div class="form-group">
+      <%- include('../partials/navbar'); %>
+      <div class="p-5 bg-light border rounded-3">
+        <form action="/apn/edit/<%= data.ID %>" method="post">
+            <h4>Editing Product N: <%= data.ID %></h4>
+            <div class="mb-3">
               <label for="name">სახელწოდება</label>
-              <input type="text" class="form-control" id="name" name="Name" placeholder="Name">
+              <input type="text" class="form-control" id="name" name="Name" placeholder="Name" value="<%= data.Name %>">
             </div>
-            <div class="form-group">
+            <div class="mb-3">
               <label for="desc">განმარტება</label>
-              <input type="text" class="form-control" id="desc" name="Description" placeholder="Description">
+              <input type="text" class="form-control" id="desc" name="Description" placeholder="Description" value="<%= data.Description %>">
             </div>
-            <div class="form-group">
+            <div class="mb-3">
               <label for="price">ფასი</label>
-              <input type="number" class="form-control" id="price" name="Price" placeholder="Price">
+              <input type="number" class="form-control" id="price" name="Price" placeholder="Price" value="<%= data.Price %>">
             </div>
-            <div class="form-group">
+            <div class="mb-3">
               <label for="url">სურათი</label>
-              <input type="text" class="form-control" id="url" name="Image" placeholder="Image URL">
+              <input type="text" class="form-control" id="url" name="Images" placeholder="Image URL" value="<%= data.Images %>">
+            </div>
+            <div class="mb-3">
+              <label for="stock">მარაგში (0-1)</label>
+              <input type="number" class="form-control" id="stock" name="Stock" placeholder="In Stock" value="<%= data.Stock %>">
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+      </div>>
     </body>
 </html>
