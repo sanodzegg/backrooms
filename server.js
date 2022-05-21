@@ -9,18 +9,30 @@ const { createTokens, validateToken } = require("./JWT");
 require("dotenv").config({ path: "user.env" });
 
 const con = mysql.createConnection({
-  host: process.env.DB_HOSTDEF,
-  user: process.env.DB_USERDEF,
-  password: process.env.DB_PASSWORDDEF,
-  database: process.env.DB_NAMEDEF,
+  host: process.env.DB_HOST,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
 });
 
 app.set("view engine", "ejs");
 app.use(express.static(__dirname + "/public"));
 app.use(express.json());
 
-app.get("/", (req, res) => {
-  res.sendFile("index.html");
+app.get("/home", (req, res) => {
+  res.sendFile(__dirname + "/public/index.html");
+});
+
+app.get("/trending", (req, res) => {
+  res.sendFile(__dirname + "/public/trending.html");
+});
+
+app.get("/product", (req, res) => {
+  res.sendFile(__dirname + "/public/product.html");
+});
+
+app.get("/discounts", (req, res) => {
+  res.sendFile(__dirname + "/public/discounts.html");
 });
 
 app.get("/err", (req, res) => {
@@ -64,12 +76,24 @@ app.get("/apn/products", validateToken, (req, res) => {
   });
 });
 
+app.get("/apn/search", validateToken, (req, res) => {
+  const term = req.query.term.toLowerCase();
+  const sql = `SELECT * FROM productsdb WHERE ID LIKE '%${term}%' OR LOWER(Name) LIKE '%${term}%' OR LOWER(Description) LIKE '%${term}%'`;
+  con.query(sql, (err, result) => {
+    if (err) throw err;
+    res.render("search", { data: result });
+  });
+});
+
 app.get("/apn/insert", validateToken, (req, res) => {
   res.render("insert");
 });
 
 app.post("/apn/insert", urlencodedParser, validateToken, (req, res) => {
   const values = Object.values(req.body);
+  if (req.body.instock === 0 || req.body.instock === "") {
+    values[values.length - 1] = 1;
+  }
   const sql =
     "INSERT INTO `productsDB`(`Name`, `Description`, `Price`, `Images`, `Stock`) VALUES (?)";
   con.query(sql, [values], (err, result) => {
@@ -94,7 +118,7 @@ app.post("/apn/edit/:id", urlencodedParser, validateToken, (req, res) => {
 });
 
 app.get("/apn/delete/:ID", validateToken, (req, res) => {
-  const id = req.params.id;
+  const id = req.params.ID;
   const sql = `DELETE FROM productsDB WHERE ID = ${id}`;
   con.query(sql, (err, result) => {
     if (err) throw err;
@@ -139,3 +163,4 @@ app.get("/v/:id", (req, res) => {
 });
 
 app.listen(3000);
+console.log(`Server is running on localhost:3000`);

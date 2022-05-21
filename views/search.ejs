@@ -1,0 +1,76 @@
+<html>
+    <%- include('../partials/head'); %>
+    <body>
+      <%- include('../partials/navbar'); %>
+      <div class="p-5 bg-light border rounded-3">
+        <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">სახელწოდება</th>
+                <th scope="col">აღწერა</th>
+                <th scope="col">ფასი</th>
+                <th scope="col">სურათი</th>
+                <th scope="col">მარაგში</th>
+              </tr>
+            </thead>
+            <tbody>
+                <% data.forEach(e => { %>
+                    <tr>
+                        <th scope="row" id="ID"><%= e.ID %></th>
+                        <td><%= e.Name %></td>
+                        <td><%= e.Description %></td>
+                        <td><%= e.Price %></td>
+                        <td><%= e.Images %></td>
+                        <td><%= e.Stock %></td>
+                        <td><a href="/apn/edit/<%= encodeURIComponent(JSON.stringify(e)) %>" class="btn btn-primary text-light">Edit</a></td>
+                        <td><a class="btn btn-danger text-light btnDel">Delete</a></td>
+                    </tr>
+                <% }); %> 
+            </tbody>
+        </table>
+    </div>
+        <div class="confirm" id="confirmTab">
+            <a class="btn btn-disabled" id="cancelMain">Cancel</a>
+            <a class="btn btn-primary text-light" id="acceptMain">OK</a>
+        </div>
+    </body>
+
+    <style>
+        .confirm {
+            display: none;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgb(233, 233, 233);
+            box-shadow: 0 0 7px rgba(0, 0, 0, 0.2);
+            padding: 1rem 2rem;
+            border-radius: 10px;
+        }
+    </style>
+
+    <script>
+        const deleteButton = document.querySelectorAll(".btnDel");
+        const cancelMain = document.getElementById("cancelMain");
+        const acceptMain = document.getElementById("acceptMain");
+        const confirmTab = document.getElementById("confirmTab");
+        deleteButton.forEach(e => {
+                e.addEventListener("click", (y) => {
+                $(confirmTab).show();
+                let id = $(e).parents().find("#ID").last().text();
+                let idText = document.createElement("p");
+                idText.innerText = `Delete item ID: ${$(e).parents().find("#ID").last().text()}?`;
+
+                confirmTab.insertBefore(idText, cancelMain);
+                cancelMain.onclick = () => {
+                    $(confirmTab).hide();
+                    $(idText).remove();
+                }
+                acceptMain.onclick = () => {
+                    acceptMain.setAttribute("href", `/apn/delete/${id}`);
+                }
+            });
+        });
+    </script>
+</html>

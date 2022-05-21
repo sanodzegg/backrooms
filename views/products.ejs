@@ -9,7 +9,7 @@
                       <tr>
                         <th scope="col">#</th>
                         <th scope="col">სახელწოდება</th>
-                        <th scope="col">განმარტება</th>
+                        <th scope="col">აღწერა</th>
                         <th scope="col">ფასი</th>
                         <th scope="col">სურათი</th>
                         <th scope="col">მარაგში</th>
@@ -25,7 +25,7 @@
                                 <td><%= e.Price %></td>
                                 <td><%= e.Images %></td>
                                 <td><%= e.Stock %></td>
-                                <td><a href="/apn/edit/<%= JSON.stringify(e) %>" class="btn btn-primary text-light">Edit</a></td>
+                                <td><a href="/apn/edit/<%= encodeURIComponent(JSON.stringify(e)) %>" class="btn btn-primary text-light">Edit</a></td>
                                 <td><a class="btn btn-danger text-light btnDel">Delete</a></td>
                             </tr>
                         <% }); %> 

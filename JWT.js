@@ -1,4 +1,5 @@
 const { sign, verify } = require("jsonwebtoken");
+require("dotenv").config({ path: "user.env" });
 
 function parseCookies(request) {
   const list = {};
@@ -20,7 +21,7 @@ function parseCookies(request) {
 const createTokens = (user) => {
   const accessToken = sign(
     { username: user.username, id: user.id },
-    "uari-tkvi-daxmarebaze-da-iwvale-shenit-iyavi-kaci"
+    process.env.JWT_TOKEN
   );
   return accessToken;
 };
@@ -30,10 +31,7 @@ const validateToken = (req, res, next) => {
   const accessToken = cookies["access-token"];
   if (!accessToken) return res.redirect("/apn");
   try {
-    const validToken = verify(
-      accessToken,
-      "uari-tkvi-daxmarebaze-da-iwvale-shenit-iyavi-kaci"
-    );
+    const validToken = verify(accessToken, process.env.JWT_TOKEN);
     if (validToken) {
       req.authenticated = true;
       return next();

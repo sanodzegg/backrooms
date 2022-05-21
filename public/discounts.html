@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discounts</title>
+    <link rel="stylesheet" href="style/master.css">
+</head>
+<body>
+    <nav class="nav__main">
+        <div class="nav__row">
+            <div class="nav__logo">
+                <a href="/"><img src="./src/logo.png" alt="site logo"></a>
+            </div>
+            <div class="nav__search">
+                <input type="text" placeholder="Search For Products" id="searchInput">
+            </div>
+            <div class="nav__icons">
+                <a href="#"><img src="./src/svg/Cart.svg" alt="cart icon"></a>
+            </div>
+        </div>
+        <div class="nav__row sub">
+            <a href="/">Home</a>
+            <a href="/trending">Trending</a>
+            <a href="/discounts" class="active">Discounts</a>
+            <a href="/product">Product</a>
+        </div>
+    </nav>
+    <section class="discounts__wrapper">
+        <h4 class="discounts__header">featured discounts</h4>
+        <section class="display__discount">
+            <div class="display__col grid">
+                <div class="grid__wrapper">
+                    <div class="grid__child">
+                        <img src="./src/BaseGrid.png" alt="trending product image">
+                        <div class="product__info">
+                            <p>Nike Court Air</p>
+                            <span class="product__cost">
+                                $58
+                            </span>
+                        </div>
+                    </div>
+                    <div class="grid__child">
+                        <img src="./src/BaseGrid1.png" alt="trending product image">
+                        <div class="product__info">
+                            <p>Nike Air Force 1</p>
+                            <span class="product__cost">
+                                $58
+                            </span>
+                        </div>
+                    </div>
+                    <div class="grid__child">
+                        <img src="./src/BaseGrid2.png" alt="trending product image">
+                        <div class="product__info">
+                            <p>Nike SB Zoom</p>
+                            <span class="product__cost">
+                                $58
+                            </span>
+                        </div>
+                    </div>
+                    <div class="grid__child">
+                        <img src="./src/BaseGrid3.png" alt="trending product image">
+                        <div class="product__info">
+                            <p>Nike Signal</p>
+                            <span class="product__cost">
+                                $58
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="display__col featured">
+                <div class="featured__row">
+                    <p class="sale1">SALE -50%</p>
+                    <span>
+                        <p id="newPrice">$50</p>
+                        <p id="oldPrice">$100</p>
+                    </span>
+                </div>
+                <div class="featured__row">
+                    <img src="./src/BaseGrid4.png" alt="featured discount item image">
+                </div>
+                <div class="featured__row">
+                    <div class="featured__desc">
+                        <h4>Nike Air Force 1 Shadow</h4>
+                        <p>description</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <a href="#" class="discounts__expbtn">
+            Explore Other Products
+        </a>
+    </section>
+    <footer>
+        <div class="footer__col1">
+            <img src="./src/logo.png" alt="site__logo">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore</p>
+        </div>
+        <div class="footer__col2">
+            <table class="col2__table">
+                <thead>
+                    <tr>
+                        <th scope="col" class="table__header">Products</th>
+                        <th scope="col" class="table__header">Legals</th>
+                        <th scope="col" class="table__header">Contacts</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Trending</th>
+                        <th>License</th>
+                        <th>+1 234 567 89 10</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Vendors</th>
+                        <th>About Us</th>
+                        <th>support@khoomi.com</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Brands</th>
+                        <th>Contacts</th>
+                    </tr>
+                    <tr>
+                        <th scope="row">Storefront</th>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </footer>
+</body>
+</html>

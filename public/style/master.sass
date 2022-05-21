@@ -1,13 +1,28 @@
-body
+@import variables
+@import mixins
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap')
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap')
+
+*
     margin: 0
     padding: 0
     box-sizing: border-box
+
+body
+    overflow-x: hidden
+    h1, h2, h3, h4, h5, h6, p, span
+        margin: 0
+        padding: 0
     nav
         padding: 1rem!important
+        *
+            font-family: 'Roboto', sans-serif
         form
             margin: 0
         .nav-link
             color: #FFF !important
+        .form-control
+            width: 350px !important
     .mainSection
         .jumbotron
             background-color: unset !important
@@ -16,17 +31,313 @@ body
             margin: 0 auto
         .table thead th
             border: unset !important
-    .sect
-        background-color: #d5d5d5
-        box-shadow: 0 0 10px #0000003d
-        padding: 5rem 2rem
-        max-width: 500px
-        h1
-            margin: 0
-            padding: 0
-            font-size: 1.5rem
     .btn
         cursor: pointer !important
     .table>:not(caption)>*>*
         max-width: 500px
         overflow: hidden
+
+    // main index part
+    .nav__main
+        @include maxwidth-div(1400)
+        @include flex-column
+        padding-bottom: unset !important
+        .nav__row
+            @include flex-between
+            width: 100%
+        .nav__row:first-child
+            border-bottom: 1px solid #00000014
+            padding-bottom: 10px
+            .nav__search
+                input
+                    width: 550px
+                    padding: 14px 0 14px 19px
+                    border-radius: 5px
+                    border: 1px solid #DFDFDF
+                    font-size: $fontsmall
+                    background: url("../src/svg/Search.svg") no-repeat center
+                    background-position-x: 95%
+                    transition: width .3s ease-in-out
+                    @media screen and ( max-width: 750px )
+                        width: 53.333vw
+
+        .sub
+            width: 70%
+            padding-top: 10px
+            transition: width .3s ease-in-out
+            @media screen and (max-width: 520px)
+                width: 90%
+            @media screen and (max-width: 350px)
+                width: 100%
+            a
+                text-decoration: none
+                padding-bottom: 15px
+                color: $dark1
+            .active
+                color: $mainbtn
+                border-bottom: 3px $mainbtn solid
+    .featured__section
+        @include maxwidth-div(1400)
+        .featured__backdrop
+            position: relative
+            @include maxwidth-div(1400)
+            img
+                width: 100%
+                object-fit: cover
+            .featured__textarea
+                @include absolute-custom(35, 50)
+                color: $imgfont
+                font-family: 'Poppins', sans-serif
+                @media screen and (max-width: 1255px)
+                    width: 48.606vw
+                h1
+                    font-size: $fontbig
+                    font-weight: 400
+                    width: 610px
+                    line-height: 70px
+                    @media screen and (max-width: 1155px)
+                        font-size: 4.675vw
+                        line-height: 6.061vw
+                        width: 52.814vw
+                p
+                    margin-top: 20px
+                    width: 600px
+                    @media screen and (max-width: 1155px)
+                        font-size: 1.385vw
+                        margin-top: 1.732vw
+                        width: 51.948vw
+                .featured__textarea-buttons
+                    @include flex-center
+                    margin-top: 40px
+                    justify-content: start
+                    grid-gap: 10px
+                    @media screen and (max-width: 1155px)
+                        margin-top: 3.463vw
+                    #buyPath
+                        @include orange-button
+                        background: url("../src/svg/Buy.svg") no-repeat center $mainbtn
+                        white-space: nowrap
+                        background-position-x: 85%
+                        @media screen and ( max-width: 435px )
+                            padding: 3vw 6.207vw
+                            font-size: 3.678vw
+                            background-size: 15%
+                    #tradeInPath
+                        background-color: $transparentbtn
+                        color: $imgfont
+                        text-decoration: none
+                        padding: 13px 27px
+                        border-radius: 5px
+                        white-space: nowrap
+                        @media screen and ( max-width: 435px )
+                            padding: 3vw 6.207vw
+                            font-size: 3.678vw
+    .urec
+        @include maxwidth-div(1400)
+        text-align: center
+        margin-top: 50px
+        font-family: 'Poppins', sans-serif
+        h5
+            font-size: $fontdefault
+            color: $dark2
+            text-transform: uppercase
+            font-weight: 500
+        h4
+            font-size: $fontsemi
+            color: $dark1
+            text-transform: uppercase
+            font-weight: 500
+        .rec__wrapper
+            margin-bottom: 50px
+            @include flex-between
+            @media screen and ( max-width: 1080px  )
+                flex-wrap: wrap
+                justify-content: center
+            @media screen and ( max-width: 565px  )
+                transform: scale(5vw)
+            .rec__fc
+                cursor: pointer
+                margin-top: 30px
+            p
+                margin: 15px 0
+            .price
+                padding: 5px 10px
+                background-color: #FFEFE8
+                color: $mainbtn
+                border-radius: 50px
+        .expBtn
+            @include default-button
+    .ad__ph
+        @include maxwidth-div(1400)
+        margin-top: 70px
+        font-family: 'Poppins', sans-serif
+        .ad__img
+            position: relative
+            img
+                width: 100%
+                overflow-x: hidden
+        .ad__tw
+            color: $imgfont
+            width: 85%
+            @include flex-between
+            @include absolute-custom(49, 50)
+            @media screen and ( max-width: 710px )
+                flex-direction: column
+                text-align: center
+                row-gap: 1.5vw
+            h3
+                font-size: $fontmedium
+                width: 520px
+                font-weight: 500
+                @media screen and ( max-width: 1400px )
+                    font-size: 3vw
+                    width: unset
+            a
+                @include default-button
+                color: $imgfont
+                white-space: nowrap
+                @media screen and ( max-width: 840px )
+                    padding: 1.5vw 3.167vw
+                    font-size: 3vw
+    .grid__trending, .display__trending, .display__product
+        @include maxwidth-div(1400)
+        font-family: 'Poppins', sans-serif
+        margin-top: 50px
+        text-align: center
+        h6
+            font-weight: 500
+            font-size: $fontdefault
+            color: $dark2
+        h4
+            font-weight: 500
+            font-size: $fontsemi
+            color: $dark1
+        .grid__wrapper
+            display: grid
+            grid-template-columns: auto auto auto auto
+            margin-bottom: 70px
+            @media screen and ( max-width: 1255px )
+                grid-template-columns: repeat(auto-fill, 310px)
+                justify-content: space-evenly
+            .grid__child
+                cursor: pointer
+                margin-top: 20px
+                .product__info
+                    @include flex-between
+                    max-width: 270px
+                    margin: 0 auto
+                    @media screen and ( max-width: 1255px )
+                        margin-top: 10px
+                    .product__cost
+                        padding: 5px 10px
+                        background-color: #FFEFE8
+                        color: $mainbtn
+                        border-radius: 50px
+    footer
+        @include maxwidth-div(1400)
+        padding: 60px 90px
+        font-family: 'Poppins', sans-serif
+        @include flex-between
+        @media screen and ( max-width:800px )
+            flex-direction: column
+            row-gap: 5vw
+            padding: 20px 90px
+        .footer__col1
+            @media screen and ( max-width:800px )
+                text-align: center
+            p
+                color: $dark2
+                max-width: 260px
+                font-size: $fontsmall
+                @media screen and ( max-width:800px )
+                    max-width: 68.750vw
+                    font-size: 2.5vw
+        .footer__col2
+
+            .table__header
+                font-size: $fontsmall
+                font-weight: bold
+                color: $dark2
+                opacity: 1
+                @media screen and ( max-width:800px )
+                    font-size: 3vw
+            th
+                font-size: $fontsmall
+                font-weight: normal
+                color: $dark2
+                opacity: .9
+                padding: 4px 35px
+                text-align: start
+                @media screen and ( max-width:800px )
+                    font-size: 3vw
+                    padding: 4px 4.375vw
+    .display__trending
+        font-family: Poppins, sans-serif
+        h4
+            margin-top: 30px
+            text-align: center
+            text-transform: uppercase
+    .discounts__wrapper
+        @include flex-column
+        .discounts__header
+            margin-top: 30px
+            text-align: center
+            text-transform: uppercase
+            font-weight: 500
+            font-size: $fontsemi
+            color: $dark1
+        .display__discount
+            @include maxwidth-div(1400)
+            margin-top: 50px
+            @include flex-center
+            font-family: Poppins, sans-serif
+            .display__col
+                margin: 0 50px
+            .featured
+                cursor: pointer
+                .featured__row
+                    @include flex-between
+                    .featured__desc
+                        @include flex-column
+                        justify-content: start
+                        align-items: start
+                        p
+                            font-size: $fontdefault
+                            color: #7A7A7A
+                    span
+                        @include flex-center
+                        #oldPrice
+                            text-decoration: line-through
+                            margin: 0 5px
+                            padding: 5px 10px
+                            background-color: #FFEFE8
+                            color: $mainbtn
+                            border-radius: 50px
+                        #newPrice
+                            margin: 0 5px
+                            color: $mainbtn
+                    h4
+                        font-size: $fontsemi
+                        font-weight: 500
+            .grid
+                .grid__wrapper
+                    display: grid
+                    grid-template-columns: auto auto
+                    gap: 30px
+                    .grid__child
+                        cursor: pointer
+                        margin-top: 20px
+                        .product__info
+                            @include flex-between
+                            max-width: 270px
+                            margin: 0 auto
+                            @media screen and ( max-width: 1255px )
+                                margin-top: 10px
+                            .product__cost
+                                padding: 5px 10px
+                                background-color: #FFEFE8
+                                color: $mainbtn
+                                border-radius: 50px
+    .discounts__expbtn, .trending__expbtn
+        @include default-button
+        margin-top: 50px
